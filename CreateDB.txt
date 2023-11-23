@@ -1,14 +1,14 @@
 CREATE DATABASE evaluation;
 
 CREATE TABLE matter (
-	codemat CHAR(10) NOT NULL PRIMARY KEY,
+    codemat CHAR(10) NOT NULL PRIMARY KEY,
     wording CHAR(25),
     coef FLOAT
 );
 
 CREATE TABLE student (
-	numstud INT NOT NULL PRIMARY KEY,
-	name CHAR(25),
+    numstud INT NOT NULL PRIMARY KEY,
+    name CHAR(25),
     firstName CHAR(25),
     dateOfBirth DATE,
     street CHAR(25),
@@ -17,7 +17,7 @@ CREATE TABLE student (
 );
 
 CREATE TABLE test (
-	numtest INT NOT NULL PRIMARY KEY,
+    numtest INT NOT NULL PRIMARY KEY,
     testDate DATE,
     place CHAR(25),
     codemat CHAR(10),
@@ -25,7 +25,7 @@ CREATE TABLE test (
 );
 
 CREATE TABLE notation (
-	score FLOAT,    
+    score FLOAT,    
     numstud INT,
     numtest INT,
     FOREIGN KEY (numstud) REFERENCES student(numstud),
