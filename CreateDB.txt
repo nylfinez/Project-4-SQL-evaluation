@@ -1,0 +1,33 @@
+CREATE DATABASE evaluation;
+
+CREATE TABLE matter (
+	codemat CHAR(10) NOT NULL PRIMARY KEY,
+    wording CHAR(25),
+    coef FLOAT
+);
+
+CREATE TABLE student (
+	numstud INT NOT NULL PRIMARY KEY,
+	name CHAR(25),
+    firstName CHAR(25),
+    dateOfBirth DATE,
+    street CHAR(25),
+    postalCode CHAR(10),
+    city CHAR(25)
+);
+
+CREATE TABLE test (
+	numtest INT NOT NULL PRIMARY KEY,
+    testDate DATE,
+    place CHAR(25),
+    codemat CHAR(10),
+    FOREIGN KEY (codemat) REFERENCES matter(codemat)
+);
+
+CREATE TABLE notation (
+	score FLOAT,    
+    numstud INT,
+    numtest INT,
+    FOREIGN KEY (numstud) REFERENCES student(numstud),
+    FOREIGN KEY (numtest) REFERENCES test(numtest)
+);
