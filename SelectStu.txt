@@ -1,0 +1,11 @@
+SELECT * FROM student;
+
+-- Change name to firstName if you want to sort the first names;
+SELECT * FROM student
+ORDER BY name DESC;
+
+SELECT name, firstName, city FROM student
+WHERE city LIKE '%ll%';
+
+SELECT firstName FROM student
+WHERE name IN ('Dupont', 'Durand', 'Martin');
