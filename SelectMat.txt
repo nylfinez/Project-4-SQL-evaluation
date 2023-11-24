@@ -1,5 +1,5 @@
 -- ROUND is to limit decimal to 2 places
 SELECT wording, ROUND(coef * 100, 2) AS coefPercentage FROM matter;
 
--- ROUND sum to 1 decimal place
+-- round the SUM to 1 decimal place
 SELECT ROUND(SUM(coef), 1) FROM matter;
