@@ -1,0 +1,40 @@
+SELECT COUNT(*) FROM test;
+
+SELECT notation.score, student.name, student.firstName
+FROM notation
+JOIN student ON notation.numstud = student.numstud;
+
+SELECT notation.score, student.name, student.firstName, matter.wording FROM notation
+JOIN student ON notation.numstud = student.numstud
+JOIN test ON notation.numtest = test.numtest
+JOIN matter ON test.codemat = matter.codemat;
+
+SELECT score FROM notation
+WHERE score >= 10;
+
+SELECT name, firstName FROM student
+JOIN notation ON student.numstud = notation.numstud
+WHERE notation.score = 20;
+
+SELECT student.name, student.firstName, ROUND(AVG(notation.score), 2) AS averageScore FROM student
+JOIN notation ON student.numstud = notation.numstud
+GROUP BY student.name, student.firstName;
+
+SELECT * FROM test
+WHERE testDate BETWEEN '2014-01-01' AND '2014-06-30';
+
+SELECT student.name, student.firstName, ROUND(AVG(notation.score), 2) AS averageScore FROM student
+JOIN notation ON student.numstud = notation.numstud
+GROUP BY student.name, student.firstName
+ORDER BY averageScore DESC;
+
+SELECT matter.wording, ROUND(AVG(notation.score), 2) AS averageScore FROM matter
+JOIN test ON matter.codemat = test.codemat
+JOIN notation ON test.numtest = notation.numtest
+GROUP BY matter.wording
+HAVING COUNT(DISTINCT(test.numtest) > 1);
+
+SELECT test.numtest, ROUND(AVG(notation.score), 2) AS averageScore FROM test
+JOIN notation ON test.numtest = notation.numtest
+GROUP BY test.numtest
+HAVING COUNT(DISTINCT(test.numtest) < 6);
